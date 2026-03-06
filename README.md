@@ -1,26 +1,22 @@
-# ⚖️ Aura: AI Compliance Architect
-**The next-generation framework for autonomous AI Governance and Risk Auditing.**
+# ⚖️ Aura: Global AI Compliance Architect
+**An Autonomous Framework for AI Governance, Regulatory Mapping, and Risk Auditing.**
 
-Aura is a high-performance auditing tool designed to bridge the gap between AI development and regulatory compliance. Built with a "Security-First" mindset, it integrates real-time model data with cloud-based telemetry to ensure every AI model in your pipeline meets professional standards.
+Aura is a high-performance auditing platform designed for the 2026 AI landscape. It provides real-time transparency into AI model licensing, monitors system health via industrial-grade telemetry, and tracks global regulatory shifts on an interactive intelligence map.
 
 ## 🚀 Key Features
-* **Autonomous Model Auditing:** Direct integration with Hugging Face API to scan for licensing compliance (MIT, Apache 2.0, etc.).
-* **Real-time Telemetry:** Powered by **Sentry** to monitor system integrity and catch architectural errors instantly.
-* **Cloud-Native Architecture:** Deployed via **Streamlit Cloud** with **Cloudflare**-ready security protocols.
-* **Risk Mitigation:** Automated alerting system for "Restrictive" license detection.
+* **🟢 Live System Heartbeat:** Real-time connectivity monitoring to the Hugging Face API ecosystem.
+* **🔍 Autonomous Model Auditing:** Instant compliance scanning of 500k+ models for licensing risks (MIT, Apache, LLAMA2).
+* **🌐 Global Regulatory Map:** Interactive tracking of AI legislation (EU AI Act, US Executive Orders).
+* **📥 Automated Compliance Certificates:** Generates professional PDF audit reports for legal and architectural review.
+* **🛡️ Sentry Telemetry:** Advanced error-tracking and performance monitoring to ensure 99.9% system uptime.
 
-## 🛠️ The Tech Stack
+## 🛠️ Tech Stack
 - **Engine:** Python 3.13
 - **Frontend:** Streamlit
-- **Monitoring:** Sentry SDK
-- **Data Source:** Hugging Face Hub
-- **Security:** TOML-encrypted Secrets Management
-
-## 🏗️ Installation & Setup
-1. Clone the repository to your local machine.
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Configure `secrets.toml` with your Sentry DSN and Hugging Face Token.
-4. Run the app: `streamlit run app.py`.
+- **Security:** TOML-Encrypted Secrets Management
+- **Monitoring:** Sentry.io SDK
+- **Data Source:** Hugging Face Hub API
+- **Visualization:** Plotly & FPDF2
 
 ## 📜 License
-This project is licensed under the **MIT License** - providing professional-grade legal protection and open-source flexibility.
+Licensed under the **MIT License**.
