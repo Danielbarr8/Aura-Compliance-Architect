@@ -3,3 +3,5 @@ sentry-sdk
 huggingface-hub
 pandas
 plotly
+fpdf2
+requests
