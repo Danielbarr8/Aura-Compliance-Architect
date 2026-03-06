@@ -1,0 +1,5 @@
+streamlit
+sentry-sdk
+huggingface-hub
+requests
+pandas
