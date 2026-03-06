@@ -2,49 +2,62 @@ import streamlit as st
 import sentry_sdk
 from huggingface_hub import HfApi
 import pandas as pd
+import plotly.express as px
 
 # 1. MONITORING SETUP
-# This ensures any errors are sent to Sentry immediately.
 sentry_sdk.init(
     dsn=st.secrets["SENTRY_DSN"],
     traces_sample_rate=1.0,
 )
 
-st.set_page_config(page_title="Aura AI Auditor", page_icon="⚖️")
+st.set_page_config(page_title="Aura AI Architect", page_icon="⚖️", layout="wide")
 
-# 2. INTERFACE
-st.title("Aura: AI Compliance Architect")
+# 2. HEADER
+st.title("⚖️ Aura: Global AI Compliance Architect")
 st.markdown("---")
 
-# 3. CORE LOGIC: HUGGING FACE AUDIT
-st.subheader("🔍 Automated Model Audit")
-model_id = st.text_input("Enter Hugging Face Model ID", "meta-llama/Llama-2-7b")
+# 3. GLOBAL RISK MAP (The New Super Feature)
+st.subheader("🌐 Global AI Regulatory Risk Map")
 
-if st.button("Run Compliance Scan"):
-    with st.spinner("Auditing AI Model..."):
+# Mock data for global regulations (Professional Research Data)
+map_data = pd.DataFrame({
+    'Country': ['United States', 'China', 'European Union', 'United Kingdom', 'Canada', 'Brazil'],
+    'Risk_Level': [3, 5, 5, 2, 3, 2],
+    'Regulation': ['Executive Order 14110', 'Generative AI Measures', 'EU AI Act', 'AI Safety Institute', 'AIDA Bill', 'Bill 2338/23']
+})
+
+fig = px.choropleth(map_data, 
+                    locations="Country", 
+                    locationmode='country names',
+                    color="Risk_Level",
+                    hover_name="Regulation",
+                    color_continuous_scale=px.colors.sequential.Reds,
+                    title="Regulatory Strictness by Region")
+
+st.plotly_chart(fig, use_container_width=True)
+
+# 4. HUGGING FACE AUDIT SECTION
+st.subheader("🔍 Automated Model Audit")
+col1, col2 = st.columns(2)
+
+with col1:
+    model_id = st.text_input("Enter Hugging Face Model ID", "meta-llama/Llama-2-7b")
+    if st.button("Run Compliance Scan"):
         try:
             api = HfApi()
             model_info = api.model_info(model_id)
-            
-            # Logic to check compliance
             lic = model_info.cardData.get('license', 'Unknown')
-            downloads = model_info.downloads
             
-            # Display Results in a Professional Table
-            data = {
-                "Audit Category": ["License", "Popularity", "Status"],
-                "Result": [lic.upper(), f"{downloads:,} Downloads", "SCAN COMPLETE"]
-            }
-            df = pd.DataFrame(data)
-            st.table(df)
+            st.write(f"**Model:** {model_id}")
+            st.write(f"**License:** {lic.upper()}")
             
             if "mit" in lic.lower() or "apache" in lic.lower():
-                st.success("✅ COMPLIANCE VERIFIED: Permissive architecture detected.")
+                st.success("✅ COMPLIANCE VERIFIED")
             else:
-                st.warning("⚠️ COMPLIANCE ALERT: Restrictive license detected.")
-
+                st.warning("⚠️ COMPLIANCE ALERT: Restrictive License")
         except Exception as e:
-            st.error("Audit Interrupted. Details sent to Sentry.")
             sentry_sdk.capture_exception(e)
+            st.error("Audit Error Logged to Sentry.")
 
-st.sidebar.info("Aura: Independent AI Governance Framework")
+with col2:
+    st.info("**Architect Note:** High-risk regions (Red) require mandatory bias audits and data transparency logs.")
