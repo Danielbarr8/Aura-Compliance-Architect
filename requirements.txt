@@ -2,3 +2,4 @@ streamlit
 sentry-sdk
 huggingface-hub
 pandas
+plotly
